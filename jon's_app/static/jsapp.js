@@ -13,9 +13,9 @@ function createChart(diurnalData) {
                 sum1 += parseInt( monthData[k].MAX, 10 );
                 sum2 += parseInt( monthData[k].MIN, 10 );
             };
-            console.log(sum1);
-            console.log(sum2);
-            if (monthData.length !== 0) {
+            console.log(i);
+            console.log(monthData.length);
+            // if (monthData.length !== 0) {
             var avg1 = sum1/monthData.length;
             var avg2 = sum2/monthData.length;
                 let data = {
@@ -31,7 +31,7 @@ function createChart(diurnalData) {
                 min.push(data2)
                 sum3 += avg1
                 sum4 += avg2
-            }
+            // }
             
         };
         console.log(max);
