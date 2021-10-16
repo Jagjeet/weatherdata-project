@@ -2,7 +2,7 @@ import pandas as pd
 from pymongo import MongoClient
 import json
 
-def mongoimport(csv_path='merged_cleaned_dataframe.csv', db_name='WeatherDB', coll_name="Weather_2019", db_url='localhost', db_port=27017):
+def mongoimport(csv_path='us_merged_df.csv', db_name='WeatherUS', coll_name="weather_us", db_url='localhost', db_port=27017):
     """ Imports a csv file at path csv_name to a mongo colection
     returns: count of the documents in the new collection
     """
