@@ -9,17 +9,22 @@ function createChart(diurnalData) {
             var monthData =  diurnalData.filter(diurnalData => diurnalData.MONTH == i);
             var sum1 = 0;
             var sum2 = 0;
+            var count = 0;
             
             for (var k = 0; k < monthData.length; k++) {
-                sum1 += parseInt( monthData[k].MAX, 10 );
-                sum2 += parseInt( monthData[k].MIN, 10 );
-                console.log(sum1)
+                if (monthData[k].MAX !== 9999.9) {
+                    if (monthData[k].MIN !== 9999.9) {   
+                    sum1 += parseInt( monthData[k].MAX, 10 );
+                    sum2 += parseInt( monthData[k].MIN, 10 );
+                    count += 1;
+                    }
+                }
             };
             console.log(sum1);
-            console.log(monthData.length);
+            console.log(count);
             // if (monthData.length !== 0) {
-            var avg1 = sum1/monthData.length;
-            var avg2 = sum2/monthData.length;
+            var avg1 = sum1/count;
+            var avg2 = sum2/count;
                 let data = {
                     x: i,
                     y: avg1
@@ -58,18 +63,20 @@ function createChart(diurnalData) {
                       borderColor: "#3cba9f",
                       backgrrunoundColor: "#71d1bd",
                       fill: false,
+                      spanGaps: true,
                     }, { 
                       data: max,
                       label: "Max",
                       borderColor: "#3cba9f",
                       backgroundColor: "#7bb6dd",
                       fill: '-1',
+                      spanGaps: true,
                     }, 
                   ]
                 },
                 options: {
                   maintainAspectRatio: false,
-                  spanGaps: false,
+                  spanGaps: true,
                   elements: {
                       line: {
                           tension: 0.000001
