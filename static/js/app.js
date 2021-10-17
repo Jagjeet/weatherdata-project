@@ -1,75 +1,118 @@
-// type plot
-function drawType(fruit) {
+function updateControlsAndCharts() {
+    //Initialize selector with station ids for the period
+    initializeStationIdsSelector();
 
-  // ping type route
-  d3.json(`/${fruit}/data`).then(function (myData) {
-
-      // map values
-      let newX = myData.map(x => x.type);
-      let newY = myData.map(x => x.cost);
-
-      // restyle existing type plot
-      Plotly.restyle('fruitBar', 'x', [newX]);
-      Plotly.restyle('fruitBar', 'y', [newY]);
-
-  });
-};
-
-// cost plot
-function drawVal(fruitVal) {
-
-  // ping cost route
-  d3.json(`/cost-gt/${fruitVal}`).then(function (myData) {
-
-      // map values
-      let newX = myData.map(x => x.type);
-      let newY = myData.map(x => x.cost);
-
-      // restyle existing cost plot
-      Plotly.restyle('fruitVal', 'x', [newX]);
-      Plotly.restyle('fruitVal', 'y', [newY]);
-
-  });
-};
-
-// initialize upon page load
-function initFruit() {
-
-  // get first value for type
-  let selection = document.getElementById('fruit').options[0].value;
-
-  // ping type route
-  d3.json(`/${selection}/data`).then(function (myData) {
-
-      console.log(selection)
-      let data = [
-          {
-              x: myData.map(x => x.type),
-              y: myData.map(x => x.cost),
-              type: 'bar'
-          }
-      ]
-      // draw plot
-      Plotly.newPlot('fruitBar', data);
-  });
-
-  // get first value for cost
-  let selectionVal = document.getElementById('fruitValue').options[0].value
-
-  // ping cost route
-  d3.json(`/cost-gt/${selectionVal}`).then(function (myData) {
-
-      console.log(selectionVal);
-      let data = [
-          {
-              x: myData.map(x => x.type),
-              y: myData.map(x => x.cost),
-              type: 'bar'
-          }
-      ]
-      // draw plot
-      Plotly.newPlot('fruitVal', data);
-  });
+    //Update chart
+    updateLineChart();
 }
 
-initFruit();
+// initialize upon page load
+function initWeather() {
+
+    let startDate = document.getElementById('start-date-id').value;
+    let endDate = document.getElementById('end-date-id').value;
+    let selector = d3.select("#select-station-id");
+
+    // Use hardcode selector value
+    let stationId = "700635"
+
+    console.log(startDate);
+    console.log(endDate);
+    console.log(stationId);
+
+    //Initialize selector with station ids for the period
+    initializeStationIdsSelector(startDate, endDate, selector);
+
+    d3.json(`api/v1.0/weatherdata/period/${startDate}/${endDate}/${stationId}`)
+                        .then(function (responseData) {
+
+        console.log(responseData)
+
+        // Setup event listeners for changing station, etc.
+        selector.on("change", function(){
+            updateLineChart();
+        });
+
+        let tempTrace = {
+            x: responseData.map(x => x.YEARMODA),
+            y: responseData.map(x => x.TEMP),
+            type: 'line'
+        }
+
+        let minTrace = {
+            x: responseData.map(x => x.YEARMODA),
+            y: responseData.map(x => x.MIN),
+            type: 'line'
+        }
+
+        let maxTrace = {
+            x: responseData.map(x => x.YEARMODA),
+            y: responseData.map(x => x.MAX),
+            type: 'line'
+        }
+
+        let tempData = [tempTrace, minTrace, maxTrace]
+
+        // draw plot
+        Plotly.newPlot('weatherLine', tempData);
+    });
+}
+
+function initializeStationIdsSelector() {
+    let startDate = document.getElementById('start-date-id').value;
+    let endDate = document.getElementById('end-date-id').value;
+    let selector = d3.select("#select-station-id");
+
+    d3.json(`api/v1.0/weatherdata/period/stations/${startDate}/${endDate}`).then(function (responseData) {
+        console.log(responseData);
+
+        responseData.forEach((station) => {
+            selector
+                .append("option")
+                .text(station)
+                .property("value", station);
+        });
+    });
+}
+
+function updateLineChart() {
+    let startDate = document.getElementById('start-date-id').value;
+    let endDate = document.getElementById('end-date-id').value;
+    let selector = d3.select("#select-station-id");
+    let selectedStationId = selector.property("value");
+
+    console.log('Updating line chart:');
+    console.log(startDate);
+    console.log(endDate);
+    console.log(selectedStationId);
+
+    d3.json(`api/v1.0/weatherdata/period/${startDate}/${endDate}/${selectedStationId}`)
+            .then(function (responseData) {
+
+        console.log(responseData)
+        console.log(selector);
+
+        let tempTrace = {
+            x: [responseData.map(x => x.YEARMODA)],
+            y: [responseData.map(x => x.TEMP)],
+        }
+
+        let minTrace = {
+            x: [responseData.map(x => x.YEARMODA)],
+            y: [responseData.map(x => x.MIN)],
+        }
+
+        let maxTrace = {
+            x: [responseData.map(x => x.YEARMODA)],
+            y: [responseData.map(x => x.MAX)],
+        }
+
+        // restyle existing plots
+        Plotly.restyle('weatherLine', tempTrace, 0);
+        Plotly.restyle('weatherLine', minTrace, 1);
+        Plotly.restyle('weatherLine', maxTrace, 2);
+
+    });
+}
+
+initWeather();

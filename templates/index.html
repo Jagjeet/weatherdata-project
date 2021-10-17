@@ -30,21 +30,44 @@
           </article>
         </section>
         <section>
-          <!-- fruit dropdown -->
-          <select id="fruit" onchange="drawType(this.value)">
-              <option selection="selected" value="apples">Apple Chart</option>
-              <option value="mango">Mango Chart</option>
-              <option value="oranges">Orange Chart</option>
-          </select>
-
-          <!-- cost dropdown -->
-          <select id="fruitValue" onchange="drawVal(this.value)">
-              <option selection="selected" value="1">>$1</option>
-              <option value="0.25">>$0.25</option>
-          </select>
+          <!-- Controls-->
+          <div class="card" style="width: 15rem;">
+            <div class="card-header">
+              <h3>Controls</h3>
+            </div>
+            <div class="card-body">
+              <label for="start-date-id" class="form-label">
+                Start Date:
+              </label>
+              <input
+                id="start-date-id"
+                class="form-control"
+                onchange="updateControlsAndCharts(this.value)"
+                type="date"
+                name="start-date"
+                min="2010-01-01"
+                max="2018-12-31"
+                value="2010-01-01"
+                required/>
+              <label for="end-date-id" class="form-label">
+                End Date:
+              </label>
+              <input
+                id="end-date-id"
+                class="form-control"
+                onchange="updateControlsAndCharts(this.value)"
+                type="date"
+                name="end-date"
+                min="2010-01-01"
+                max="2018-12-31"
+                value="2018-12-31"
+                required/>
+              <label for="sel-station-id" class="form-label">Station ID No.</label>
+              <select id="select-station-id" class="form-select" value="700635"></select>
+            </div>
+          </div>
           <!-- plots -->
-          <div id="fruitBar"></div>
-          <div id="fruitVal"></div>
+          <div id="weatherLine"></div>
         </section>
       </div>
       <div class="col-lg-2 col-1">
