@@ -1,8 +1,8 @@
 function findState(LBLData) {
     for (var z = 0; z < LBLData.length; z++) {
-        let str = LBLData.LBL
+        let str = LBLData[z].LBL
         var strPlace = str.search("US")
-        var strState = strPlace + 4
+        var strState = strPlace - 4
         var state = str.charAt(strState) + str.charAt((strState +1))
         console.log(state)
     }
@@ -31,8 +31,6 @@ function createChart(diurnalData) {
                     }
                 }
             };
-            console.log(sum1);
-            console.log(count);
             // if (monthData.length !== 0) {
             var avg1 = sum1/count;
             var avg2 = sum2/count;
