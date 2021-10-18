@@ -1,4 +1,15 @@
+function findState(LBLData) {
+    for (var z = 0; z < LBLData.length; z++) {
+        let str = LBLData.LBL
+        var strPlace = str.search("US")
+        var strState = strPlace + 4
+        var state = str.charAt(strState) + str.charAt((strState +1))
+        console.log(state)
+    }
+}
+
 function createChart(diurnalData) {
+        
         diurnalData.sort(function(a, b){return a.MONTH - b.MONTH});
 
         var min = [];
@@ -118,6 +129,7 @@ function initWeather() {
 
     // ping type route
     d3.json(`/${selection}/data`).then(function (myData) {
+        findState(myData)
         createChart(myData) 
     });
     
