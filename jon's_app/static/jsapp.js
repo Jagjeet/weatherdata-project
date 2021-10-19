@@ -55,10 +55,11 @@ function createChart(diurnalData) {
             // }
             
         };
-        console.log(max);
-        console.log(min);
+        
         var avg3 = sum3/min.length;
         var avg4 = sum4/min.length;
+        console.log(avg3);
+        console.log(avg4);
         var unrounded = avg3 - avg4;
         var avgDiurnal = Math.round(unrounded)
         console.log(avgDiurnal)
