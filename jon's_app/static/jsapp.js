@@ -18,8 +18,11 @@ function createChart(diurnalData) {
         var max = [];
         var sum3 = 0;
         var sum4 = 0;
+        var year = diurnalData[1].YEAR
+        
         for (var i = 1; i < 13; i++) {
             var monthData =  diurnalData.filter(diurnalData => diurnalData.MONTH == i);
+            
             var sum1 = 0;
             var sum2 = 0;
             var count = 0;
@@ -56,10 +59,10 @@ function createChart(diurnalData) {
         console.log(min);
         var avg3 = sum3/min.length;
         var avg4 = sum4/min.length;
-        var unrounded = avg1 - avg2;
+        var unrounded = avg3 - avg4;
         var avgDiurnal = Math.round(unrounded)
         console.log(avgDiurnal)
-        document.getElementById("average").innerHTML = `<p>The average diurnal tempature range for the US is ${avgDiurnal}</p>`;
+        document.getElementById("average").innerHTML = `<p>The average diurnal tempature range for the US in ${year} is ${avgDiurnal}</p>`;
 
       var ctx = document.getElementById('MinMaxChart').getContext('2d'); //get the context (canvas)
   
