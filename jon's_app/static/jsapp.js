@@ -1,12 +1,14 @@
-function findState(LBLData) {
-    for (var z = 0; z < LBLData.length; z++) {
-        let str = LBLData[z].LBL
-        var strPlace = str.search("US")
-        var strState = strPlace - 4
-        var state = str.charAt(strState) + str.charAt((strState +1))
-        console.log(state)
-    }
-}
+
+
+// function findState(LBLData) {
+//     for (var z = 0; z < LBLData.length; z++) {
+//         let str = LBLData[z].LBL
+//         var strPlace = str.search("US")
+//         var strState = strPlace - 4
+//         var state = str.charAt(strState) + str.charAt((strState +1))
+//         console.log(state)
+//     }
+// }
 
 function createChart(diurnalData) {
         
@@ -84,7 +86,7 @@ function createChart(diurnalData) {
                   ]
                 },
                 options: {
-                  maintainAspectRatio: false,
+                  maintainAspectRatio: true,
                   spanGaps: true,
                   elements: {
                       line: {
@@ -107,6 +109,15 @@ function createChart(diurnalData) {
                               maxRotation: 0
                           }
                       }],
+                    yAxes: [{
+                        display: true,
+                        ticks: {
+                            beginAtZero: true,
+                            steps: 10,
+                            stepValue: 5,
+                            max: 110
+                        }
+                    }] 
                   }
                 }
 
@@ -127,7 +138,7 @@ function initWeather() {
 
     // ping type route
     d3.json(`/${selection}/data`).then(function (myData) {
-        findState(myData)
+        // findState(myData)
         createChart(myData) 
     });
     
