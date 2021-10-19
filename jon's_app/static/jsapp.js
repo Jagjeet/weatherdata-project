@@ -1,13 +1,35 @@
-function findState(LBLData) {
-    for (var z = 0; z < LBLData.length; z++) {
-        let str = LBLData[z].LBL
-        var strPlace = str.search("US")
-        var strState = strPlace - 4
-        var state = str.charAt(strState) + str.charAt((strState +1))
-        console.log(state)
-    }
-}
+// function findState(LBLData) {
+//     for (var z = 0; z < LBLData.length; z++) {
+//         let str = LBLData[z].LBL
+//         var strPlace = str.search("US")
+//         var strState = strPlace - 4
+//         var state = str.charAt(strState) + str.charAt((strState +1))
+//         console.log(state)
+//     }
+// }
+// function map(coordinates) {
+//     var myMap = L.map("map", {
+//         center: [40.71, -116.10],
+//         zoom: 8
+//     });
+    
+//     var topo = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+//         attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+//     });
 
+//     var baseMaps = {
+//         "Topographic Map": topo
+//     };
+
+//     var temp = L.circle([coordinates.LAT, coordinates.LON], {
+//         color: "black",  
+//         fillColor: "#FF6347",
+//         weight: .5,
+//         fillOpacity: .5,
+//         // Adjust the radius.
+//         radius: coordinates.TEMP,
+//       });
+// }
 function createChart(diurnalData) {
         
         diurnalData.sort(function(a, b){return a.MONTH - b.MONTH});
@@ -84,7 +106,7 @@ function createChart(diurnalData) {
                   ]
                 },
                 options: {
-                  maintainAspectRatio: false,
+                  maintainAspectRatio: true,
                   spanGaps: true,
                   elements: {
                       line: {
@@ -127,7 +149,8 @@ function initWeather() {
 
     // ping type route
     d3.json(`/${selection}/data`).then(function (myData) {
-        findState(myData)
+        // findState(myData)
+        // map(myData)
         createChart(myData) 
     });
     
