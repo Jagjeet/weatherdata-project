@@ -1,4 +1,17 @@
+
+
+// function findState(LBLData) {
+//     for (var z = 0; z < LBLData.length; z++) {
+//         let str = LBLData[z].LBL
+//         var strPlace = str.search("US")
+//         var strState = strPlace - 4
+//         var state = str.charAt(strState) + str.charAt((strState +1))
+//         console.log(state)
+//     }
+// }
+
 function createChart(diurnalData) {
+        
         diurnalData.sort(function(a, b){return a.MONTH - b.MONTH});
 
         var min = [];
@@ -20,8 +33,6 @@ function createChart(diurnalData) {
                     }
                 }
             };
-            console.log(sum1);
-            console.log(count);
             // if (monthData.length !== 0) {
             var avg1 = sum1/count;
             var avg2 = sum2/count;
@@ -75,7 +86,7 @@ function createChart(diurnalData) {
                   ]
                 },
                 options: {
-                  maintainAspectRatio: false,
+                  maintainAspectRatio: true,
                   spanGaps: true,
                   elements: {
                       line: {
@@ -98,6 +109,15 @@ function createChart(diurnalData) {
                               maxRotation: 0
                           }
                       }],
+                    yAxes: [{
+                        display: true,
+                        ticks: {
+                            beginAtZero: true,
+                            steps: 10,
+                            stepValue: 5,
+                            max: 110
+                        }
+                    }] 
                   }
                 }
 
@@ -118,6 +138,7 @@ function initWeather() {
 
     // ping type route
     d3.json(`/${selection}/data`).then(function (myData) {
+        // findState(myData)
         createChart(myData) 
     });
     
