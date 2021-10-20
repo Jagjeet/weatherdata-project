@@ -36,37 +36,40 @@ function createChart(diurnalData) {
                     }
                 }
             };
-            // if (monthData.length !== 0) {
+
             var avg1 = sum1/count;
             var avg2 = sum2/count;
-                let data = {
-                    x: i,
-                    y: avg1
-                };
-                max.push(data);    
-                    
-                let data2 = {
-                    x: i,
-                    y: avg2
-                };
-                min.push(data2)
-                sum3 += avg1
+            let data = {
+                x: i,
+                y: avg1
+            };
+
+            max.push(data);
+
+            let data2 = {
+                x: i,
+                y: avg2
+            };
+
+            min.push(data2);
+
+            if (monthData.length !== 0) {
+                sum3 += avg1,
                 sum4 += avg2
-            // }
-            
+            };
         };
         
         var avg3 = sum3/min.length;
         var avg4 = sum4/min.length;
-        console.log(avg3);
-        console.log(avg4);
+        console.log(min.length);
+        console.log(sum3);
         var unrounded = avg3 - avg4;
         var avgDiurnal = Math.round(unrounded)
         console.log(avgDiurnal)
         document.getElementById("average").innerHTML = `<p>The average diurnal tempature range for the US in ${year} is ${avgDiurnal}</p>`;
 
-      var ctx = document.getElementById('MinMaxChart').getContext('2d'); //get the context (canvas)
-  
+        var ctx = document.getElementById('MinMaxChart').getContext('2d'); //get the context (canvas)
+
           
             var myChart = new Chart(ctx, {
                 type: 'line',
