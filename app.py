@@ -76,6 +76,22 @@ def weather_period(start, end, station_id):
     parsed = [x for x in db_data]
     print('parsed: ', parsed)
     return jsonify(parsed)
+    
+@app.route('/<state>/<year>/data')
+def db_data(state, year):
+
+    db_data = mongo.db.collection.find(
+                                    {"$and":
+                                        [
+                                            {'STATE': state},
+                                            {'YEAR': float(year)}
+                                        ]
+                                    }, 
+                                    {'_id': False})
+    print('this route was pinged')
+    parsed = [x for x in db_data]
+    print('parsed: ', parsed)
+    return jsonify(parsed)
 
 if __name__ == '__main__':
     app.run(debug=True)
