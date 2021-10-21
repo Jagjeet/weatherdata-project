@@ -7,8 +7,8 @@ app = Flask(__name__)
 
 # TODO
 # Use PyMongo to establish Mongo connection
-# mongo = PyMongo(app, uri="mongodb://localhost:27017/USWeather")
-mongo = PyMongo(app, uri="mongodb://localhost:27017/USWeatherAgg")
+mongo = PyMongo(app, uri="mongodb://localhost:27017/USWeather")
+# mongo = PyMongo(app, uri="mongodb://localhost:27017/USWeatherAgg")
 
 
 # Route to render index.html template using data from Mongo
