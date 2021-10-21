@@ -57,24 +57,25 @@ anychart.onDocumentReady(function() {
               {"id":"US.DC","value":50}]
     );
   
-    // create choropleth series
-    series = map.choropleth(dataSet);
-  
-    // set geoIdField to 'id', this field contains in geo data meta properties
-    series.geoIdField('id');
-  
-    // set map color settings
-    series.colorScale(anychart.scales.linearColor('#deebf7', '#3182bd'));
-    series.hovered().fill('#addd8e');
-  
-    // set geo data, you can find this map in our geo maps collection
-    // https://cdn.anychart.com/#maps-collection
-    map.geoData(anychart.maps['united_states_of_america']);
-  
-    //set map container id (div)
+    //create bubble series
+    var series = map.bubble(dataSet);
+
+    //set series geo id field settings
+    series.labels().format("{%id}");
+
+    series.tooltip().format("{%size} thousands of tourists");
+
+    series.tooltip().titleFormat("{%id}");
+
+    map.title("Most popluar places \n of touristic interest in 2013");
+
+    // change the bubble max size
+    map.maxBubbleSize(45);
+    map.minBubbleSize(15);
+
+    // set container id for the chart
     map.container('container');
-  
-    //initiate map drawing
+    // initiate chart drawing
     map.draw();
   });
 
@@ -82,7 +83,7 @@ anychart.onDocumentReady(function() {
 
 
 
-function updateControlsAndCharts() {
+  function updateControlsAndCharts() {
     //Initialize selector with station ids for the period
     initializeStationIdsSelector();
 
@@ -200,5 +201,3 @@ function updateLineChart() {
 }
 
 initWeather();
-
-
