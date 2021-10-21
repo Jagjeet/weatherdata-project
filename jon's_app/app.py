@@ -24,10 +24,17 @@ def home():
     return render_template("index.html", weather_data=weather_data)
 
 # TODO - Update routes below
-@app.route('/<my_type>/data')
-def db_data(my_type):
+@app.route('/<state>/<year>/data')
+def db_data(state, year):
 
-    db_data = mongo.db.collection.find({'YEAR': float(my_type)}, {'_id': False})
+    db_data = mongo.db.collection.find(
+                                    {"$and":
+                                        [
+                                            {'STATE': state},
+                                            {'YEAR': float(year)}
+                                        ]
+                                    }, 
+                                    {'_id': False})
     print('this route was pinged')
     parsed = [x for x in db_data]
     print('parsed: ', parsed)

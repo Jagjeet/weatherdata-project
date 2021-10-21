@@ -34,57 +34,57 @@
 
   // create data set
   var dataSet = anychart.data.set(
-      [{"id":"US.MA","value":0},
-			{"id":"US.MN","value":1},
-			{"id":"US.MT","value":2},
-			{"id":"US.ND","value":3},
-			{"id":"US.HI","value":4},
-			{"id":"US.ID","value":5},
-			{"id":"US.WA","value":6},
-			{"id":"US.AZ","value":7},
-			{"id":"US.CA","value":8},
-			{"id":"US.CO","value":9},
-			{"id":"US.NV","value":10},
-			{"id":"US.NM","value":11},
-			{"id":"US.OR","value":12},
-			{"id":"US.UT","value":13},
-			{"id":"US.WY","value":14},
-			{"id":"US.AR","value":15},
-			{"id":"US.IA","value":16},
-			{"id":"US.KS","value":17},
-			{"id":"US.MO","value":18},
-			{"id":"US.NE","value":19},
-			{"id":"US.OK","value":20},
-			{"id":"US.SD","value":21},
-			{"id":"US.LA","value":22},
-			{"id":"US.TX","value":23},
-			{"id":"US.CT","value":24},
-			{"id":"US.NH","value":25},
-			{"id":"US.RI","value":26},
-			{"id":"US.VT","value":27},
-			{"id":"US.AL","value":28},
-			{"id":"US.FL","value":29},
-			{"id":"US.GA","value":30},
-			{"id":"US.MS","value":31},
-			{"id":"US.SC","value":32},
-			{"id":"US.IL","value":33},
-			{"id":"US.IN","value":34},
-			{"id":"US.KY","value":35},
-			{"id":"US.NC","value":36},
-			{"id":"US.OH","value":37},
-			{"id":"US.TN","value":38},
-			{"id":"US.VA","value":39},
-			{"id":"US.WI","value":40},
-			{"id":"US.WV","value":41},
-			{"id":"US.DE","value":42},
-			{"id":"US.MD","value":43},
-			{"id":"US.NJ","value":44},
-			{"id":"US.NY","value":45},
-			{"id":"US.PA","value":46},
-			{"id":"US.ME","value":47},
-			{"id":"US.MI","value":48},
-			{"id":"US.AK","value":49},
-			{"id":"US.DC","value":50}]
+      [{"id":"US.MA","coordinates":0},
+			{"id":"US.MN","coordinates":1},
+			{"id":"US.MT","coordinates":2},
+			{"id":"US.ND","coordinates":3},
+			{"id":"US.HI","coordinates":4},
+			{"id":"US.ID","coordinates":5},
+			{"id":"US.WA","coordinates":6},
+			{"id":"US.AZ","coordinates":[ -1833.0, -220.0 ]},
+			{"id":"US.CA","coordinates":8},
+			{"id":"US.CO","coordinates":9},
+			{"id":"US.NV","coordinates":10},
+			{"id":"US.NM","coordinates":11},
+			{"id":"US.OR","coordinates":12},
+			{"id":"US.UT","coordinates":13},
+			{"id":"US.WY","coordinates":14},
+			{"id":"US.AR","coordinates":15},
+			{"id":"US.IA","coordinates":16},
+			{"id":"US.KS","coordinates":17},
+			{"id":"US.MO","coordinates":18},
+			{"id":"US.NE","coordinates":19},
+			{"id":"US.OK","coordinates":20},
+			{"id":"US.SD","coordinates":21},
+			{"id":"US.LA","coordinates":22},
+			{"id":"US.TX","coordinates":23},
+			{"id":"US.CT","coordinates":24},
+			{"id":"US.NH","coordinates":25},
+			{"id":"US.RI","coordinates":26},
+			{"id":"US.VT","coordinates":27},
+			{"id":"US.AL","coordinates":28},
+			{"id":"US.FL","coordinates":29},
+			{"id":"US.GA","coordinates":30},
+			{"id":"US.MS","coordinates":31},
+			{"id":"US.SC","coordinates":32},
+			{"id":"US.IL","coordinates":33},
+			{"id":"US.IN","coordinates":34},
+			{"id":"US.KY","coordinates":35},
+			{"id":"US.NC","coordinates":36},
+			{"id":"US.OH","coordinates":37},
+			{"id":"US.TN","coordinates":38},
+			{"id":"US.VA","coordinates":39},
+			{"id":"US.WI","coordinates":40},
+			{"id":"US.WV","coordinates":41},
+			{"id":"US.DE","coordinates":42},
+			{"id":"US.MD","coordinates":43},
+			{"id":"US.NJ","coordinates":44},
+			{"id":"US.NY","coordinates":45},
+			{"id":"US.PA","coordinates":46},
+			{"id":"US.ME","coordinates":47},
+			{"id":"US.MI","coordinates":48},
+			{"id":"US.AK","coordinates":49},
+			{"id":"US.DC","coordinates":50}]
   );
 
   // create choropleth series
@@ -159,12 +159,12 @@
               <input
                 id="start-date-id"
                 class="form-control"
-                onchange="updateControlsAndCharts(this.value)"
+                onchange="updateControlsAndCharts(this.coordinates)"
                 type="date"
                 name="start-date"
                 min="2010-01-01"
                 max="2018-12-31"
-                value="2010-01-01"
+                coordinates="2010-01-01"
                 required/>
               <label for="end-date-id" class="form-label">
                 End Date:
@@ -172,15 +172,15 @@
               <input
                 id="end-date-id"
                 class="form-control"
-                onchange="updateControlsAndCharts(this.value)"
+                onchange="updateControlsAndCharts(this.coordinates)"
                 type="date"
                 name="end-date"
                 min="2010-01-01"
                 max="2018-12-31"
-                value="2018-12-31"
+                coordinates="2018-12-31"
                 required/>
               <label for="sel-station-id" class="form-label">Station ID No.</label>
-              <select id="select-station-id" class="form-select" value="700635"></select>
+              <select id="select-station-id" class="form-select" coordinates="700635"></select>
             </div>
           </div>
           <!-- plots -->
