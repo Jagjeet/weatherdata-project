@@ -1,6 +1,6 @@
 # Weather Data- Project III
 
-<div style="text-align:center"> <img src="" alt="NOAA Logo" width="200"/></div>
+<div style="text-align:center"> <img src="https://github.com/Jagjeet/weatherdata-project/blob/main/Screenshots/markus-spiske-Skf7HxARcoc-unsplash.jpg?raw=true" alt="NOAA Logo" width="500"/></div>
 
 <br></br>
 <div style="text-align:center"> <span style="font-family:calibri; font-size:2em; color:lightblue;">Goal:</span></div>
@@ -33,19 +33,19 @@ Dataset Source: NOAA. This dataset is publicly available for anyone to use under
 <br></br>
 
 1. We downloaded the tar and csv files from Kaggle
-![Kaggle Download Screenshot](Screenshots\Kaggle_screenshot_dl.PNG)
-![FilesOnOurComputer](Screenshots\FilesScreenshots.PNG)
+![Kaggle Download Screenshot](https://raw.githubusercontent.com/Jagjeet/weatherdata-project/main/Screenshots/Kaggle_screenshot_dl.PNG)
+![FilesOnOurComputer](https://github.com/Jagjeet/weatherdata-project/blob/main/Screenshots/FilesScreenshots.PNG?raw=true)
 <br></br>
 
 2. We used Python and Pandas to <b>E</b>xtract the data from both file types 
 
 <br></br>
 Extracting from csv into a Pandas DataFrame with date time cleaning:
-![Code to Extract Location CSV data](Screenshots\Station_location_code.PNG)
+![Code to Extract Location CSV data](https://github.com/Jagjeet/weatherdata-project/blob/main/Screenshots/Station_location_code.PNG?raw=true)
 <br></br>
 Extracting from TAR files into a Pandas DataFrame with date time cleaning:
 
-![Code to Extract TAR file data](Screenshots\Tar_file_extract_code.PNG)
+![Code to Extract TAR file data](https://github.com/Jagjeet/weatherdata-project/blob/main/Screenshots/Tar_file_extract_code.PNG?raw=true)
 <br></br>
 
 3. <b>T</b>ransformed it into a clean DataFrame
@@ -55,9 +55,13 @@ We did a lot of the cleaning while extracting (see screenshots above); however, 
 
 ![Merging DFs](Screenshots\mergingDFs.PNG)
 
-![Cleaning Merge](Screenshots\cleaningmerge.PNG)
+![Cleaning Merge](https://github.com/Jagjeet/weatherdata-project/blob/main/Screenshots/cleaningmerge.PNG?raw=true)
 <br></br>
 4. <b>L</b>oaded into our Mongo Database
+<br></br>
+
+![Loading to MongoDB](https://github.com/Jagjeet/weatherdata-project/blob/main/Screenshots/SendtoMongo.PNG?raw=true)
+
 
 <br></br>
 <div style="text-align:center"> <span style="font-family:calibri; font-size:2em; color:lightblue;">Visualizations & Interactions available to a user:</span></div>
