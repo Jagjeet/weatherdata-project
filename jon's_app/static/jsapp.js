@@ -1,15 +1,5 @@
 
 
-// function findState(LBLData) {
-//     for (var z = 0; z < LBLData.length; z++) {
-//         let str = LBLData[z].LBL
-//         var strPlace = str.search("US")
-//         var strState = strPlace - 4
-//         var state = str.charAt(strState) + str.charAt((strState +1))
-//         console.log(state)
-//     }
-// }
-
 function createChart(diurnalData) {
         
         diurnalData.sort(function(a, b){return a.MONTH - b.MONTH});
@@ -18,7 +8,8 @@ function createChart(diurnalData) {
         var max = [];
         var sum3 = 0;
         var sum4 = 0;
-        var year = diurnalData[1].YEAR
+        var yearnumber = diurnalData[1].YEAR
+        var statelabel = diurnalData[1].STATE
         
         for (var i = 1; i < 13; i++) {
             var monthData =  diurnalData.filter(diurnalData => diurnalData.MONTH == i);
@@ -66,7 +57,7 @@ function createChart(diurnalData) {
         var unrounded = avg3 - avg4;
         var avgDiurnal = Math.round(unrounded)
         console.log(avgDiurnal)
-        document.getElementById("average").innerHTML = `<p>The average diurnal tempature range for the US in ${year} is ${avgDiurnal}</p>`;
+        document.getElementById("average").innerHTML = `<p>The average diurnal tempature range for ${statelabel} in ${yearnumber} is ${avgDiurnal}</p>`;
 
         var ctx = document.getElementById('MinMaxChart').getContext('2d'); //get the context (canvas)
 
@@ -130,22 +121,29 @@ function createChart(diurnalData) {
 
               });
 }
-function drawType(year) {
+function drawType(state, year) {
     // ping type route
-    d3.json(`/${year}/data`).then(function (myData) {
+    
+};
+function initializeSelector() {
+    let state = document.getElementById('State').value;
+    let year = document.getElementById('Year').value;
+
+    d3.json(`/${state}/${year}/data`).then(function (myData) {
+        
         createChart(myData)
     });
-};
-
+    
+}
 // initialize upon page load
 function initWeather() {
 
     // get first value for type
-    let selection = document.getElementById('MinMax').options[0].value
-
+    let selection1 = document.getElementById('State').options[0].value
+    let selection2 = document.getElementById('Year').options[0].value
     // ping type route
-    d3.json(`/${selection}/data`).then(function (myData) {
-        // findState(myData)
+    d3.json(`/${selection1}/${selection2}/data`).then(function (myData) {
+        
         createChart(myData) 
     });
     
