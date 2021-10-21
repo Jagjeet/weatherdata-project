@@ -14,17 +14,8 @@ mongo = PyMongo(app, uri="mongodb://localhost:27017/USWeather")
 # Route to render index.html template using data from Mongo
 @app.route("/")
 def home():
-
-    #TODO - Retrieve real data from DB
-    weather_data = {}
-    weather_data['data'] = 'It sure is cold!'
-    # Find one record of data from the mongo database
-    # weatherdata = mongo.db.collection.find_one()
-
     # Return template and data
-    return render_template("index.html", weather_data=weather_data)
-
-# TODO - Update routes below
+    return render_template("index.html")
 
 # Get all unique station ids
 # Using techniques from:
