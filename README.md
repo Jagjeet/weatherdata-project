@@ -5,7 +5,9 @@
 </p>
 
 <br></br>
-<p align="center"> <text style="font-family:calibri; font-size:2em; color:lightblue;">Goal:</text></p>
+<p align="center"> 
+##Goal:
+</p>
 <br></br>
 The goal of this project was to extract, transform, and load weather data into a Mongo database; then, taking that data and creating at least three different dashboard tools to display weather data in different visualization styles (i.e. charts and maps). We then wanted to add interactivity with our pages to allow the visualizations to change based on the user’s selections on the page.
 <br></br>
