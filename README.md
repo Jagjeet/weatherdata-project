@@ -5,10 +5,12 @@
 </p>
 
 <br></br>
+<font size="15">
 <p align="center"> 
-##Goal:
+Goal:
 </p>
-<br></br>
+</font>
+
 The goal of this project was to extract, transform, and load weather data into a Mongo database; then, taking that data and creating at least three different dashboard tools to display weather data in different visualization styles (i.e. charts and maps). We then wanted to add interactivity with our pages to allow the visualizations to change based on the user’s selections on the page.
 <br></br>
 In the below README we have provided additional information about our:
@@ -19,13 +21,14 @@ In the below README we have provided additional information about our:
 
 
 <br></br>
+<font size="15">
 <p align="center">  
-<text style="font-family:calibri; font-size:2em; color:lightblue;" >Data Used:</text>
+Data Used:
 </p>
-<br></br>
+</font>
+
 <p align="center">  
 <img src="https://storage.googleapis.com/kaggle-competitions/kaggle/3136/media/kaggle-transparent.svg" alt="NOAA Logo" width="200"/>
-
 </p>
 
 <p align="center">  
@@ -35,15 +38,16 @@ In the below README we have provided additional information about our:
 Our data came from a NOAA GSOD dataset that was pulled and put into Kaggle, which can be found here: <a href="https://www.kaggle.com/noaa/noaa-global-surface-summary-of-the-day" target="_top">Kaggle Data</a>. Per the link:
 "This dataset is identical to Kaggle's NOAA GSOD dataset using BigQuery. The data for both datasets updates on the same basis (daily) but may not be updated on the same time. Data from this dataset can be downloaded/accessed through this dataset page and Kaggle's API...
 
-<p align="center">  <text style="font-family:calibri; font-size:1.4em; color:lightblue;" >Content</text></p>
+<p align="center">  <font size="5">Content</font></p>
 The online data files begin with 1929 and are at the time of this writing at the Version 8 software level. Over 9000 stations' data are typically available. The daily elements included in the dataset (as available from each station) are: Mean temperature (.1 Fahrenheit) Mean dew point (.1 Fahrenheit) Mean sea level pressure (.1 mb) Mean station pressure (.1 mb) Mean visibility (.1 miles) Mean wind speed (.1 knots) Maximum sustained wind speed (.1 knots) Maximum wind gust (.1 knots) Maximum temperature (.1 Fahrenheit) Minimum temperature (.1 Fahrenheit) Precipitation amount (.01 inches) Snow depth (.1 inches) Indicator for occurrence of: Fog, Rain or Drizzle, Snow or Ice Pellets, Hail, Thunder, Tornado/Funnel Cloud.
 <br></br>
-<p align="center"> <text style="font-family:calibri; font-size:1.4em; color:lightblue;" >Acknowledgements</text></p>
+<p align="center"> <font size="5"> Acknowledgements</font></p>
 Dataset Source: NOAA. This dataset is publicly available for anyone to use under the following terms provided by the Dataset Source — http://www.data.gov/privacy-policy#data_policy — and is provided "AS IS" without any warranty, express or implied, from Google. Google disclaims all liability for any damages, direct or indirect, resulting from the use of the dataset."
 
 
 <br></br>
-<p align="center"> <text style="font-family:calibri; font-size:2em; color:lightblue;">ETL (Extract, Transform, Load) process:</text></p>
+<p align="center"> <font size="5"> ETL (Extract, Transform, Load) process:
+</font></p>
 <br></br>
 
 1. We downloaded the tar and csv files from Kaggle
@@ -78,6 +82,6 @@ We did a lot of the cleaning while extracting (see screenshots above); however, 
 
 
 <br></br>
-<p align="center"> <text style="font-family:calibri; font-size:2em; color:lightblue;">Visualizations & Interactions available to a user:</text></p>
+<p align="center"> <font size="15">Visualizations & Interactions available to a user:</font></p>
 <br></br>
 
