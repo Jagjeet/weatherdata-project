@@ -21,7 +21,7 @@ function initWeather() {
     console.log(stationId);
 
     //Initialize selector with station ids for the period
-    initializeStationIdsSelector(startDate, endDate, selector);
+    initializeStationIdsSelector();
 
     d3.json(`api/v1.0/weatherdata/period/${startDate}/${endDate}/${stationId}`)
                         .then(function (responseData) {
@@ -33,28 +33,61 @@ function initWeather() {
             updateLineChart();
         });
 
+        let xData = responseData.map( x => {
+            let d = new Date(x.YEARMODA);
+            // return d.toISOString().split('T')[0];
+            return d.toISOString().substring(0,10);
+        });
         let tempTrace = {
-            x: responseData.map(x => x.YEARMODA),
+            x: xData,
             y: responseData.map(x => x.TEMP),
-            type: 'line'
+            type: 'line',
+            line: {
+                color: 'rgb(0, 255, 0)',
+                width: 1
+            },
+            name: 'Temperature'
         }
 
         let minTrace = {
-            x: responseData.map(x => x.YEARMODA),
+            x: xData,
             y: responseData.map(x => x.MIN),
-            type: 'line'
+            type: 'line',
+            line: {
+                color: 'rgb(0, 0, 255)',
+                width: 1
+            },
+            name: 'Min Temperature'
         }
 
         let maxTrace = {
-            x: responseData.map(x => x.YEARMODA),
+            x: xData,
             y: responseData.map(x => x.MAX),
-            type: 'line'
+            type: 'line',
+            line: {
+                color: 'rgb(255, 0, 0)',
+                width: 1
+            },
+            name: 'Max Temperature'
         }
+
+        var layout = {
+            title: 'Temperature (Degrees Fahrenheit) vs Date (GMT)',
+            xaxis: {
+                title: 'Date (GMT)',
+                tickmode: 'auto',
+                tickangle: -45
+            },
+            yaxis: {
+                title: 'Degrees Fahrenheit',
+                range: [-40, 120]
+            }
+          };
 
         let tempData = [tempTrace, minTrace, maxTrace]
 
         // draw plot
-        Plotly.newPlot('weatherLine', tempData);
+        Plotly.newPlot('weatherLine', tempData, layout);
     });
 }
 
@@ -92,18 +125,24 @@ function updateLineChart() {
         console.log(responseData)
         console.log(selector);
 
+        let xData = responseData.map( x => {
+            let d = new Date(x.YEARMODA);
+            // return d.toISOString().split('T')[0];
+            return d.toISOString().substring(0,10);
+        });
+
         let tempTrace = {
-            x: [responseData.map(x => x.YEARMODA)],
+            x: [xData],
             y: [responseData.map(x => x.TEMP)],
         }
 
         let minTrace = {
-            x: [responseData.map(x => x.YEARMODA)],
+            x: [xData],
             y: [responseData.map(x => x.MIN)],
         }
 
         let maxTrace = {
-            x: [responseData.map(x => x.YEARMODA)],
+            x: [xData],
             y: [responseData.map(x => x.MAX)],
         }
 
