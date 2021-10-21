@@ -71,7 +71,7 @@ Extracting from TAR files into a Pandas DataFrame with date time cleaning:
 <br></br>
 We did a lot of the cleaning while extracting (see screenshots above); however, after merging the two DataFrames more cleaning needed to be done:
 
-![Merging DFs](Screenshots\mergingDFs.PNG)
+![Merging DFs](https://github.com/Jagjeet/weatherdata-project/blob/main/Screenshots/mergingDFs.PNG?raw=true)
 
 ![Cleaning Merge](https://github.com/Jagjeet/weatherdata-project/blob/main/Screenshots/cleaningmerge.PNG?raw=true)
 <br></br>
