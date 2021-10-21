@@ -14,7 +14,7 @@ function initWeather() {
     let selector = d3.select("#select-station-id");
 
     // Use hardcode selector value
-    let stationId = "700635"
+    let stationId = "690150"
 
     console.log(startDate);
     console.log(endDate);
