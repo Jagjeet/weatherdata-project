@@ -80,13 +80,30 @@ We did a lot of the cleaning while extracting (see screenshots above); however, 
 
 ![Loading to MongoDB](https://github.com/Jagjeet/weatherdata-project/blob/main/Screenshots/SendtoMongo.PNG?raw=true)
 
+![USWeather.collection](https://github.com/Jagjeet/weatherdata-project/blob/main/Screenshots/DBStructureDaily.png?raw=true)
+
+![USWeatherAgg.collection](https://github.com/Jagjeet/weatherdata-project/blob/main/Screenshots/DBStructureAggregate.png?raw=true) 
 
 <br></br>
 <p align="center"> <b>Visualizations & Interactions available to a user:</b></p>
 <br></br>
 
+Our first two visualizations interact with the control panel on the left side of the webpage allowing the user to adjust the visualizations based on a date range and station ID:
+
+![Station Temperature Data](https://github.com/Jagjeet/weatherdata-project/blob/main/Screenshots/StationTemperatureData_723010.png?raw=true)
 
 
+![Station Temperature Data](https://github.com/Jagjeet/weatherdata-project/blob/main/Screenshots/StationTemperatureData_785140.png?raw=true)
+
+<br></br>
+
+
+Our final visualization at the bottom of the webpage allows the user to change the data being pulled via the state and year: 
+
+
+![Monthly Average](https://github.com/Jagjeet/weatherdata-project/blob/main/Screenshots/MonthlyAvgDiurnalTempRange_FL2015.png?raw=true)
+
+![Monthly Average](https://github.com/Jagjeet/weatherdata-project/blob/main/Screenshots/MonthlyAvgDiurnalTempRange_PA2017.png?raw=true)
 
 
 
